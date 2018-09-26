@@ -1,0 +1,243 @@
+\documentclass[10pt]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage[shortlabels]{enumitem} 
+\usepackage{amsxtra, upgreek}
+\usepackage{enumitem, fancyref, theoremref}
+\usepackage{amsmath, amssymb, amsthm, thmtools}
+\usepackage{amsrefs, latexsym,pstricks, mathtext}
+\usepackage{hyperref, caption, tikz, bbm}
+\usepackage{algorithm2e}
+\usepackage{graphicx}
+\graphicspath{{pictures/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\usepackage[left=0mm, top=0mm, right=0mm, bottom=0mm, nohead, nofoot]{geometry}
+
+\textwidth=42pc
+\calclayout
+
+%===============================================================================
+
+% Title settings for Russian language in amsart
+
+%===============================================================================
+
+\makeatletter
+\def\@settitle{\begin{center}%
+    \baselineskip14\p@\relax
+    \bfseries\scshape
+    \@title
+  \end{center}%
+}
+\makeatother
+
+%===============================================================================
+
+% Defined commands
+
+%===============================================================================
+
+\newcommand{\BR}{\mathbb{R}} %real numbers
+\newcommand{\BN}{\mathbb{N}} %natural numbers
+\newcommand{\BZ}{\mathbb{Z}} %integer numbers
+\newcommand{\BZp}{\BZ_{\geqslant 0}} %nonnegative integers
+\newcommand{\BC}{\mathbb{C}} %complex numbers
+\newcommand{\qet}[1]{| #1 \rangle} %qet vector notation
+\newcommand{\braqet}[2]{\langle #1 | #2 \rangle} %braqet
+\newcommand{\triqet}[3]{\langle #1 | #2 | #3 \rangle} %triqet
+\newcommand{\pst}[1]{\underline{#1}} %particle included in spaces
+\newcommand{\BP}{\mathbb{P}} %probability
+\newcommand{\const}{\mathrm{const}} %constant
+\newcommand{\vspan}[1]{\mathrm{span}\{ #1 \}} %span
+\newcommand{\ceiling}[1]{\lceil #1 \rceil} %ceiling
+\newcommand{\floor}[1]{\lfloor #1 \rfloor} %floor
+\newcommand{\Alg}{\mathrm{Alg}} %algorithm
+\newcommand{\row}{\mathrm{row}} %row
+\newcommand{\eps}{\varepsilon} %eps
+\newcommand{\Ss}{\Sigma^*} %all words
+\newcommand{\Einheit}{\mathbbm{1}} %characteristic function
+\newcommand{\RAMS}[4]{\big< #1, \{#2_i\}, \{#3_i\}, \{#4_i\} \big>} %RAM state
+
+%===============================================================================
+
+% Theorem styles
+
+%===============================================================================
+
+\theoremstyle{plain}
+\newtheorem*{quest}{Вопрос}
+\newtheorem{prop}{Утверждение}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{hypoth}{Гипотеза}
+\newtheorem{lemma}{Лемма}[section]
+
+\theoremstyle{remark}
+\newtheorem{conseq}{Вывод}
+\newtheorem{rem}{Замечание}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+
+\newtheoremstyle{problem}
+  {\topsep}   % ABOVESPACE
+  {\topsep}   % BELOWSPACE
+  {\normalfont}  % BODYFONT
+  {0pt}       % INDENT
+  {\bfseries} % HEADFONT
+  {.}         % HEADPUNCT
+  {5pt plus 1pt minus 1pt} % HEADSPACE
+  {}          % CUSTOM-HEAD-SPEC
+\newtheorem{problem}{Задача}
+\newenvironment{theorem}[2][Теорема]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Задача]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+ 
+\def\eps{\varepsilon}
+\def\T{{\cal T}}
+\def\H{{\cal H}}
+\def\F{{\cal F}}
+\def\K{{\cal K}}
+\def\L{{\cal L}}
+\def\F{{\cal F}}
+\def\Q{{\cal Q}}
+\def\N{{\cal N}}
+\def\p{{\cal P}}
+\def\np{{\cal NP}}
+\def\A{{\cal A}}
+\def\B{{\cal B}}
+\def\D{{\cal D}}
+\def\BB{{\cal B}^* }
+\def\DD{{\cal D}^* }
+\def\TT{\tilde{\cal T}}
+\def\f{\tilde f}
+\def\ind{\mathop{\rm index}}
+\def\St{\mathop{\rm St}}
+\let\bd\partial
+\def\V{\ensuremath{{\cal V}}}
+\def\SS{{\mathbb S}}
+\def\RR{\mathbb R}
+\def\QQ{\mathbb Q}
+\def\PP{\mathbb P}
+\def\R{\cal R}
+\def\NN{\mathbb N}
+\def\CC{\mathbb C}
+\def\ZZ{\mathbb Z}
+\def\FF{\mathbb F}
+\def\s{\sigma}
+\def\S{\Sigma }
+\def\ss{\Sigma^* }
+\def\ra{\rightarrow}
+\def\da{\downarrow}
+\def\Ra{\Rightarrow}
+\def\t{\theta}
+\def\l{\lambda}
+
+\begin{document}
+    \textup{Филиппова Анастасия}
+
+\begin{center}
+
+    \large\textbf{Домашнее задание 1}
+    
+
+\end{center}
+\begin{enumerate}
+    \item \textbf{Постройте грамматику для языка $\{a^nb^m|n>m>0\}$ и докажите, что она на самом деле порождает этот язык.}
+    Построим следующую грамматику:\\
+    $G = (\small\{S, A\small\}, \small\{a, b\small\}, \small\{S \rightarrow aA, A \rightarrow aA|aAb|ab\small\}, \small\{S\small\})$\\
+    Докажем по индукции, что данная грамматика порождает язык $\{a^nb^m|n>m>0\}$, натуральный параметр - количество совершенных переходов:\\
+    $1)$ База $k = 2$:\\
+    $S \xrightarrow aA \rightarrow \big\{a^2b, a^2Ab, a^2A\big\}$\\
+    $2)$ Пусть на $ k = n $ переходе: \\
+    $S \xrightarrow{n} \big\{a^n b^m, a^n A b^m, a^n A\big\}$, где $m$ принимает все значения из отрезка $\small[2, n-1\small]$.\\
+    Индукционный переход: на n+1 переходе получаютя цепочки: \\
+    $S \xrightarrow{n+1} \big\{a^{n+1} b^{m+1}, a^{n+1} A b^{m+1}, a^{n+1} A\big\}$, где $m$ принимает все значения из отрезка $\in \small[2, n-1\small]$.\\
+    Рассмотрим n+1 переход:\\
+    $a^n A b^m \rightarrow \big\{a^{n+1} b^{m+1}, a^{n+1} A b^{m+1}, a^{n+1} A b^{m}\big\}$\\
+    $a^n A \rightarrow \big\{a^{n+1} b, a^{n+1} A b, a^{n+1} A\big\} \Rightarrow $ предположение индукции доказано, то есть данная грамматика действительно пораждает данный язык.
+    \item \textbf{Докажите, что для любого регулярного множества $R$ можно построить грамматику $G$, которая будет порождать это множество.}\\
+    Регулярное множество $R$ будет описываться регулярным выражением r. Будем доказывать по индукции, натуральным параметром является длина регулярного выражения.\\
+    $1)$База индукции: $n = 0$ - пустое слово:$ G = (\small\{S\small\}, \small\{\small\}, \small\{S \rightarrow \epsilon\small\}, \small\{S\small\})$\\
+    $2)$ Пусть для регулярных множеств, которые описываюся регулярным выражением длины $k$, существует грамматика, которая порождает это множество. Докажем, что это справедливо для выражений длины больше $k$. Пусть $P, Q$ - регулярные множества, описывающееся регулярными выражениеми $p, q, |p| = k, |q| = l, l<= k$. По предположению индукции $\exist~ G_1(P) = (\small\{N_1\small\}, \small\{T_1\small\}, \small\{P_1 \small\}, \small\{S_1\small\}), G_2(Q) =  (\small\{N_2\small\}, \small\{T_2\small\}, \small\{P_2 \small\}, \small\{S_2\small\})$. \\
+    $p | q$ описывает множество $P \cup Q$. Построим следующую грамматику: $G = (\small\{N_1, N_2\small\}, \small\{T_1, T_2\small\}, \small\{S\rightarrow S_1|S_2 \small\}, \small\{S\small\})$. Легко проверить, что такая грамматика порождает множество $P \cup Q$ - длина регулярного вы ражения $|P | q| = k + l + 1$. \\
+    Для множества $PQ$ построим $G = (\small\{N_1, N_2\small\}, \small\{T_1, T_2\small\}, \small\{S\rightarrow S_1S_2 \small\}, \small\{S\small\})$. Очевидно, что она порождает множество $PQ$, длина регулярного выражения $|pq| = l + k + 1$.\\
+    Для множества $P^*$: зададим грамматику по индукции: для $P^1, P^0$ - очевидно, для $P^h$ $G = (\small\{N_1\small\}, \small\{T_1\small\}, \small\{S\rightarrow S_1$...$S_1 \small\}, \small\{S\small\}), $ где $S_1$...$S_1$ - $S_1$ n раз.\\
+    Таким образом, получаем, что для любого регулярного выражения длиной больше k существует грамматика, которая их порождает. (так как регулярное выражение длины $k$ есть подвыражения меньшей длины, связанные опрециями $|$ или $^*$ или конкатенация. Что и требовалось доказать.
+    \item 
+   \textbf{ Постройте грамматику для языка $\{a^nb^m|n,m>0, m\ne n\}$ и докажите, что она на самом деле порождает этот язык.}\\
+   Обозначим за $P = \small\{a^n, a^m\small\}^*, n>m>0, Q = \small\{a^n,b^m\small\}, 0<n<m$. Тогда искомый язык $L = P \cup Q$. Для множества $P$ грамматика $G_1 = (\small\{S_1, A_1\small\}, \small\{a, b\small\}, \small\{S \rightarrow aA, A_1 \rightarrow aA_1|aA_1b|ab\small\}, \small\{S_1\small\})$, для $Q$ аналгично: $G_2 = (\small\{S_2, A_2\small\}, \small\{a, b\small\}, \small\{S_2 \rightarrow A_2b, A_2 \rightarrow A_2b|aA_2b|ab\small\}, \small\{S_2\small\})$, тогда $G(L) = (\small\{S, A_1, A_2, S_1, S_2\small\}, \small\{a, b\small\}, \small\{S \rightarrow S_1|S_2 \small\}, \small\{S\small\})$
+   
+   \item \textbf{Постройте РВ для языка:}
+
+\textbf{а) Всех всех слов четной длины над алфавитом $\{a,b\}$}
+
+\textbf{б) Всех всех слов, содержащих ровно одно подслово "ab" над алфавитом $\{a,b\}$}
+
+\textbf{в) Всех слов в "camelCase" над алфавитом ${a,b,A,B}$ (слово начинается с нескольких строчных букв, далее повторяются блоки из одной заглавной и некоторого, возможно нулевого, количества строчных букв)}\\
+a) $(aa|bb|ab|ba)^*$\\
+б) $(b|\epsilon)(b^*|a^*)(ab)(a^*|b^*)(a|\epsilon)$\\
+в) $(a|b)(a|b)^*((A|B)(a|b)^*)^*$\newpage
+\item
+\textbf{Постройте РВ для языка $L\subseteq \{t,x\}^*$ всех слов, которые начинаются и заканчиваются на "txt" и докажите его корректность.}\\
+$(txt)(t|x)^*(txt) | (txtxt)|(txt)$ - регулярное выражение для данного языка. Докажем, что построенное множество содержит те и только те слова, которые указаны в условии.\\
+Сначала докажем включение $L \subseteq R$, где $R$ - регулярное множество, описываемое данным регулярным выражением. Пусть $w\in L$, тогда возможны 3 случая: $w = txt, w = txtxt$ - очевидно, что $w \in R$, третий вариант: $w = txtutxt, $ где $u \in \small\{x, t\small\}^*$ Очевидно, что $\forall w\in L\hookrightarrow w\in R\Rightarrow L \subseteq R$.\\
+Докажем обратное включение: пусть $w \in R$. Очевидно, что $w = txt u txt| txtxt |txt ,$ где $u \in \small\{t, x\small\}^* \Rightarrow R \subseteq  L$.\\
+Доказали, что $L = R$, то есть данное регулярное выражение корректно. \item
+$1)$Есть процедура генерации цепочек языка. Чтобы проверить, принадлежит ли $w\in \small\{a,b\small\}^*$ языку, нумеруем сгенерированные цепочки. Далее сравниваем $w$ со всеми цепочками $L$. Если принадлежит, процедура останавливается, если нет, то, если язык $L$ конечен, то сравнив $w$ с каждой цепочкой, не найдя соответсвие, процедура остановится с ответом нет. Если язык $L$ не является конечным, то процедура никогда не остановится.\\
+$2)$В обратную сторону: занумеруем слова из $\small\{a, b\small}^*$ в лексикографическом порядке: $1 - \epsilon, 2 - a, 3 - b, 4 - aa, 5 - ab, 6 - ba, 7 - bb$...Если принадлежит - добавляем в $L$, если нет, итерируемся далешь по номерую Таким образом перечислим все цепочки $L$. 
+
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

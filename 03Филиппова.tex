@@ -1,0 +1,244 @@
+\documentclass[10pt]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage[shortlabels]{enumitem} 
+\usepackage{amsxtra, upgreek}
+\usepackage{enumitem, fancyref, theoremref}
+\usepackage{amsmath, amssymb, amsthm, thmtools}
+\usepackage{amsrefs, latexsym,pstricks, mathtext}
+\usepackage{hyperref, caption, tikz, bbm}
+\usepackage{algorithm2e}
+\usepackage{graphicx}
+\graphicspath{{pictures/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\usepackage[left=0mm, top=0mm, right=0mm, bottom=0mm, nohead, nofoot]{geometry}
+
+\textwidth=42pc
+\calclayout
+
+%===============================================================================
+
+% Title settings for Russian language in amsart
+
+%===============================================================================
+
+\makeatletter
+\def\@settitle{\begin{center}%
+    \baselineskip14\p@\relax
+    \bfseries\scshape
+    \@title
+  \end{center}%
+}
+\makeatother
+
+%===============================================================================
+
+% Defined commands
+
+%===============================================================================
+
+\newcommand{\BR}{\mathbb{R}} %real numbers
+\newcommand{\BN}{\mathbb{N}} %natural numbers
+\newcommand{\BZ}{\mathbb{Z}} %integer numbers
+\newcommand{\BZp}{\BZ_{\geqslant 0}} %nonnegative integers
+\newcommand{\BC}{\mathbb{C}} %complex numbers
+\newcommand{\qet}[1]{| #1 \rangle} %qet vector notation
+\newcommand{\braqet}[2]{\langle #1 | #2 \rangle} %braqet
+\newcommand{\triqet}[3]{\langle #1 | #2 | #3 \rangle} %triqet
+\newcommand{\pst}[1]{\underline{#1}} %particle included in spaces
+\newcommand{\BP}{\mathbb{P}} %probability
+\newcommand{\const}{\mathrm{const}} %constant
+\newcommand{\vspan}[1]{\mathrm{span}\{ #1 \}} %span
+\newcommand{\ceiling}[1]{\lceil #1 \rceil} %ceiling
+\newcommand{\floor}[1]{\lfloor #1 \rfloor} %floor
+\newcommand{\Alg}{\mathrm{Alg}} %algorithm
+\newcommand{\row}{\mathrm{row}} %row
+\newcommand{\eps}{\varepsilon} %eps
+\newcommand{\Ss}{\Sigma^*} %all words
+\newcommand{\Einheit}{\mathbbm{1}} %characteristic function
+\newcommand{\RAMS}[4]{\big< #1, \{#2_i\}, \{#3_i\}, \{#4_i\} \big>} %RAM state
+
+%===============================================================================
+
+% Theorem styles
+
+%===============================================================================
+
+\theoremstyle{plain}
+\newtheorem*{quest}{Вопрос}
+\newtheorem{prop}{Утверждение}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{hypoth}{Гипотеза}
+\newtheorem{lemma}{Лемма}[section]
+
+\theoremstyle{remark}
+\newtheorem{conseq}{Вывод}
+\newtheorem{rem}{Замечание}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+
+\newtheoremstyle{problem}
+  {\topsep}   % ABOVESPACE
+  {\topsep}   % BELOWSPACE
+  {\normalfont}  % BODYFONT
+  {0pt}       % INDENT
+  {\bfseries} % HEADFONT
+  {.}         % HEADPUNCT
+  {5pt plus 1pt minus 1pt} % HEADSPACE
+  {}          % CUSTOM-HEAD-SPEC
+\newtheorem{problem}{Задача}
+\newenvironment{theorem}[2][Теорема]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Задача]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+ 
+\def\eps{\varepsilon}
+\def\T{{\cal T}}
+\def\H{{\cal H}}
+\def\F{{\cal F}}
+\def\K{{\cal K}}
+\def\L{{\cal L}}
+\def\F{{\cal F}}
+\def\Q{{\cal Q}}
+\def\N{{\cal N}}
+\def\p{{\cal P}}
+\def\np{{\cal NP}}
+\def\A{{\cal A}}
+\def\B{{\cal B}}
+\def\D{{\cal D}}
+\def\BB{{\cal B}^* }
+\def\DD{{\cal D}^* }
+\def\TT{\tilde{\cal T}}
+\def\f{\tilde f}
+\def\ind{\mathop{\rm index}}
+\def\St{\mathop{\rm St}}
+\let\bd\partial
+\def\V{\ensuremath{{\cal V}}}
+\def\SS{{\mathbb S}}
+\def\RR{\mathbb R}
+\def\QQ{\mathbb Q}
+\def\PP{\mathbb P}
+\def\R{\cal R}
+\def\NN{\mathbb N}
+\def\CC{\mathbb C}
+\def\ZZ{\mathbb Z}
+\def\FF{\mathbb F}
+\def\s{\sigma}
+\def\S{\Sigma }
+\def\ss{\Sigma^* }
+\def\ra{\rightarrow}
+\def\da{\downarrow}
+\def\Ra{\Rightarrow}
+\def\t{\theta}
+\def\l{\lambda}
+
+\begin{document}
+    \textup{Филиппова Анастасия}
+
+\begin{center}
+
+    \large\textbf{Домашнее задание 3}
+    
+
+\end{center}
+\begin{enumerate}
+\item 
+   $ u \cup~ v = w :nullable(w) = nullable(u) ~or~ nullable(v) ;
+    firstpos(w) = firstpos(u)\cup firstpos(v) ;
+     lastpos(w) =  lastpos(u) \cup lastpos(v);\\
+   w = u^*:  nullable(w) = true; firstpos(w) =  firstpos(u); lastpos(w) = lastpos(u); \\
+   w = u \cdot v: nullable(w) = nullable(u) ~and~ nullable(v); if~ nullable(u) == True: firstpos(w) = firstpos(v) \cup firstpos(u);else:firstpos(w) = firstpos(u); if~ nullable(v):lastpos(w) = lastpos(u) \cup lastpos(v) ;else:lastpos(w) = lastpos(v)
+   $.
+\item Построим НКА для РВ $ab(aab|b)^*b:$\\
+\begin{figure}[h]
+\center{\includegraphics[scale=0.4]{1.png}}
+\end{figure}\\
+Далее составим таблицу переходов:\\
+\begin{tabular}{|c|c|c|c|}
+    \hline
+   $&  & a & b \\
+   \hline
+   \rightarrow A & 1 & B &\\
+   \hline
+   B & 2 & & C\\
+   \hline
+   C& 3,4,9,8& D&E\\
+    \hline
+    D&5&F& \\
+     \hline
+    E&10,11,8,3,4,9&D&E\\
+     \hline
+    F&6& &H\\
+     \hline
+    H & 7,8,3,4,9 & D & E $\\
+    \hline\end{tabular}
+    Исходя из таблицы видно, что состояние $A$ - стартовое состояние, а состояние $E$ - финальное, причем единственное. Используя таблицу, постороим ДКА:\\
+    \begin{figure}[h]
+\center{\includegraphics[scale=0.4]{2.png}}
+\end{figure}\\
+    \newpage
+    \item $a_1b_2(a_3a_4b_5|b_6)^*b_7\#_8$\\
+    Построим дерево синтаксического разбора для данного выражения:
+    \begin{figure}[h]
+\center{\includegraphics[scale=0.15]{3.jpg}}
+\end{figure}\\
+Посчитаем значение функции $followpos$ для каждого символа:\\
+\begin{tabular}{|c|c|}
+    \hline
+   $ 1 &  2 \\
+   \hline
+   2 & 3,6,7\\
+   \hline
+   3 & 4 \\
+   \hline
+   4 & 5\\
+    \hline
+   5  & 3,6,7\\
+     \hline
+    6 & 6,7\\
+     \hline
+    7 & 8 $\\
+    \hline\end{tabular}
+
+Теперь по данному дереву построим таблицу переходов:\\
+\begin{tabular}{|c|c|c|c|}
+    \hline
+   $&  & a & b \\
+   \hline
+   \rightarrow A & firstpos(root) = 1 & B &\\
+   \hline
+   B & 2 & & C\\
+   \hline
+   C& 3,6,7& D&E\\
+    \hline
+    D&4&F& \\
+     \hline
+    E&6,7,8& &E\\
+     \hline
+    F&5& &C$\\
+    \hline\end{tabular}
+
+        \begin{figure}[h]
+\center{\includegraphics[scale=0.3]{4.png}}
+\end{figure}\\    \newpage
+Очевидно, что в задачах 2 и 3 получились одинаковые ДКА.
+\item Очевидно, что такой язык не является регулярным. $L=\{xy:|x|=|y|, y \text{ содержит букву a}\subseteq\{a,b\}^*$\\
+Если бы язык был регулярным, то выполнялась бы лемма о накачке:\\
+$\exists~ n\in N:~\forall~w \in L:|w|\geqslant n ~\exists~ x,y,z \in \sum^*: |xy|\leqslant n , y \neq \epsilon \hookrightarrow w = xyz$ и $\forall k\in N\cup\{\small0\small\} ~xy^kz \in L$\\
+Построим отрицание леммы о накачке:\\
+$\forall n\in N~ \exists~ w \in L, |w|\geqslant n: ~\forall~ x,y,z \in \sum^*: |xy|\leqslant n , y \neq \epsilon \hookrightarrow w = xyz$ и $\exists k\in N\cup\small\{0\small\} ~xy^kz \notin L$\\
+То есть надо для любого натурального числа найти слово из языка, длина которого равна этому натуральному числу, причем, чтобы выполнялись выше описанные требования.\\
+Тогда возьмем слово $a^(n+2)b^n$. Данное слово лежит в языке: $a^{n+1} = u, ab^n = t$, причем $a\in t, w = ut$.Так как по требованиям леммы $xy \leqslant n\Rightarrow xy = a^ia^j, (i+j)\leqslant n$. По лемме о накачке, если бы язык был регулярным, то $a^ia^{n+2-i-j}b^n \in L$, но данное слово лежит в языке тогда и только тогда, когда $j < 2 $ (чтобы а присутствовала во второй половине слова). Но $j \neq 0$, так как $y \neq \epsilon$ и $j \neq 1$, иначе слово $a^{n+1}b^n$ - нечетной длины и не лежит в $L$. Следовательно, лемма не выполняется для слова $a^{n+2}b^n ~\forall ~n \in L$. Доказано, язык не является регулярным.
+\end{enumerate}
+\end{document}

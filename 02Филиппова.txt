@@ -1,0 +1,220 @@
+\documentclass[10pt]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage[shortlabels]{enumitem} 
+\usepackage{amsxtra, upgreek}
+\usepackage{enumitem, fancyref, theoremref}
+\usepackage{amsmath, amssymb, amsthm, thmtools}
+\usepackage{amsrefs, latexsym,pstricks, mathtext}
+\usepackage{hyperref, caption, tikz, bbm}
+\usepackage{algorithm2e}
+\usepackage{graphicx}
+\graphicspath{{pictures/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\usepackage[left=0mm, top=0mm, right=0mm, bottom=0mm, nohead, nofoot]{geometry}
+
+\textwidth=42pc
+\calclayout
+
+%===============================================================================
+
+% Title settings for Russian language in amsart
+
+%===============================================================================
+
+\makeatletter
+\def\@settitle{\begin{center}%
+    \baselineskip14\p@\relax
+    \bfseries\scshape
+    \@title
+  \end{center}%
+}
+\makeatother
+
+%===============================================================================
+
+% Defined commands
+
+%===============================================================================
+
+\newcommand{\BR}{\mathbb{R}} %real numbers
+\newcommand{\BN}{\mathbb{N}} %natural numbers
+\newcommand{\BZ}{\mathbb{Z}} %integer numbers
+\newcommand{\BZp}{\BZ_{\geqslant 0}} %nonnegative integers
+\newcommand{\BC}{\mathbb{C}} %complex numbers
+\newcommand{\qet}[1]{| #1 \rangle} %qet vector notation
+\newcommand{\braqet}[2]{\langle #1 | #2 \rangle} %braqet
+\newcommand{\triqet}[3]{\langle #1 | #2 | #3 \rangle} %triqet
+\newcommand{\pst}[1]{\underline{#1}} %particle included in spaces
+\newcommand{\BP}{\mathbb{P}} %probability
+\newcommand{\const}{\mathrm{const}} %constant
+\newcommand{\vspan}[1]{\mathrm{span}\{ #1 \}} %span
+\newcommand{\ceiling}[1]{\lceil #1 \rceil} %ceiling
+\newcommand{\floor}[1]{\lfloor #1 \rfloor} %floor
+\newcommand{\Alg}{\mathrm{Alg}} %algorithm
+\newcommand{\row}{\mathrm{row}} %row
+\newcommand{\eps}{\varepsilon} %eps
+\newcommand{\Ss}{\Sigma^*} %all words
+\newcommand{\Einheit}{\mathbbm{1}} %characteristic function
+\newcommand{\RAMS}[4]{\big< #1, \{#2_i\}, \{#3_i\}, \{#4_i\} \big>} %RAM state
+
+%===============================================================================
+
+% Theorem styles
+
+%===============================================================================
+
+\theoremstyle{plain}
+\newtheorem*{quest}{Вопрос}
+\newtheorem{prop}{Утверждение}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{hypoth}{Гипотеза}
+\newtheorem{lemma}{Лемма}[section]
+
+\theoremstyle{remark}
+\newtheorem{conseq}{Вывод}
+\newtheorem{rem}{Замечание}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+
+\newtheoremstyle{problem}
+  {\topsep}   % ABOVESPACE
+  {\topsep}   % BELOWSPACE
+  {\normalfont}  % BODYFONT
+  {0pt}       % INDENT
+  {\bfseries} % HEADFONT
+  {.}         % HEADPUNCT
+  {5pt plus 1pt minus 1pt} % HEADSPACE
+  {}          % CUSTOM-HEAD-SPEC
+\newtheorem{problem}{Задача}
+\newenvironment{theorem}[2][Теорема]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Задача]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+ 
+\def\eps{\varepsilon}
+\def\T{{\cal T}}
+\def\H{{\cal H}}
+\def\F{{\cal F}}
+\def\K{{\cal K}}
+\def\L{{\cal L}}
+\def\F{{\cal F}}
+\def\Q{{\cal Q}}
+\def\N{{\cal N}}
+\def\p{{\cal P}}
+\def\np{{\cal NP}}
+\def\A{{\cal A}}
+\def\B{{\cal B}}
+\def\D{{\cal D}}
+\def\BB{{\cal B}^* }
+\def\DD{{\cal D}^* }
+\def\TT{\tilde{\cal T}}
+\def\f{\tilde f}
+\def\ind{\mathop{\rm index}}
+\def\St{\mathop{\rm St}}
+\let\bd\partial
+\def\V{\ensuremath{{\cal V}}}
+\def\SS{{\mathbb S}}
+\def\RR{\mathbb R}
+\def\QQ{\mathbb Q}
+\def\PP{\mathbb P}
+\def\R{\cal R}
+\def\NN{\mathbb N}
+\def\CC{\mathbb C}
+\def\ZZ{\mathbb Z}
+\def\FF{\mathbb F}
+\def\s{\sigma}
+\def\S{\Sigma }
+\def\ss{\Sigma^* }
+\def\ra{\rightarrow}
+\def\da{\downarrow}
+\def\Ra{\Rightarrow}
+\def\t{\theta}
+\def\l{\lambda}
+
+\begin{document}
+    \textup{Филиппова Анастасия}
+
+\begin{center}
+
+    \large\textbf{Домашнее задание 2}
+    
+
+\end{center}
+\begin{enumerate}
+\item \textbf{Постройте грамматику, порождающую все слова языка $\{a,b\}^*\setminus \{a^nb^m|n\ge 0, m\ge 1\}$ \textbf{четной длины} и только их.}\\
+Рассмотрим возможные варианты: \begin{figure}[h]
+\center{\includegraphics[scale=0.153]{1.jpg}}
+\end{figure}\\
+$S_1 \rightarrow \epsilon;\\
+S_2 \rightarrow baB|b^2B; B \rightarrow abB|bbB|baB|aaB|\epsilon\\
+S_3 \rightarrow a^2A; A \rightarrow a^2A|\epsilon\\
+S_4 \rightarrow S_{4_1}|S_{4_2}; S_{4_1} \rightarrow a^2C; C\rightarrow a^2C|b^2C|abC|baD; D\rightarrow \epsilon|B\\
+S_{4_2} \rightarrow aS_{4_1}a |aS_{4_1}b\\
+S \rightarrow S_1|S_2|S_3|S_4$
+\item
+\textbf{Докажите по индукции, что грамматика $\{\{S,B,C\}, \{a,b,c\}, P, S\}$, где $P=\{S\rightarrow aSBC|aBC, CB\rightarrow BC, aB\rightarrow ab, bB\rightarrow bb, bC\rightarrow bc, cC\rightarrow cc\}$ порождает язык $\{a^nb^nc^n|n\ge 1\}$}\\
+Cкажем, что: $0)S\rightarrow aSBC|1) aBC,\\2) CB\rightarrow BC,\\3) aB\rightarrow ab,\\4)bB\rightarrow bb,\\5)bC\rightarrow bc,\\6) cC\rightarrow cc\ $ \\
+Рассмотрим нескоько первых шагов: $S \vdash_{1} aBC \vdash_3 abC \vdash_5 abc, \\
+S \vdash_0 aSBC \vdash_1 a^2(BC)^2 \vdash_2 a^2BBCC \vdash_{3,4} \vdash aabbCC \vdash_{5,6} aabbcc$.\\
+Под знаком $\vdash$ указываем, какое правило применяем, а над знаком - количество раз.\\
+Проведем доказательство в 2 стороны: сначала покажем по индукции, что цепочка вида $a^nb^nc^n$ пораждается данной грамматикой, затем покажем, что данная грамматика не пораждает никакие другие цепочки.\\\newpage
+$1)$Выше было показано, что цепочка $abc$ выводима. 
+Предположим, что при $n = k$ цепочка $a^kb^kc^k$ пораждается грамматикой, докажем, что данной грамматикой пораждается цепочка $a^{k+1}b^{k+1}c^{k+1}, n = k+1$.Очевидно, что цепочка $a^kb^kc^k$ может быть выводима только из цепочки вида $a^{k-1}S(BC)^{k-1}$. Применим к этой цепочке правила грамматики: $a^{k-1}S(BC)^{k-1} \vdash_0 a^kS(BC)^k\vdash_1a^{k+1}(BC)^{k+1}$, теперь применяем правило 2 столько раз, чтобы $(BC)^{k+1} \rightarrow B^{k+1}C^{k+1}$ (можно заметить что это правило надо применять $1+2+ ...+ n = n(n-1)/2$ раз (n = k+1), так как при добавлении новой пары $BC$ к уже "отредактированной" последовательности, то правило 2 применяется к добавленной букве $B$ столько раз, сколько букв $C$ стоит перед ней). 
+Получаем $a^{k+1}(BC)^{k+1} \vdash^{n(n-1)/2}_{2} a^{k+1}B^{k+1}C^{k+1} \vdash_{3} a^{k+1}bB^{k}C^{k+1} \vdash^{n-1}_{4} a^{k+1}b^{k+1}C^{k+1} \vdash^{n}_{5,6} a^{k+1}b^{k+1}c^{k+1}$, доказано.\\
+$2)$ Теперь докажем, что других цепочек грамматика не пораждает.
+Действительно,обозначим $N(a)$ - количество символов а.Легко заметить,что на любом шаге $N(a) = N(b) + N(B) = N(c) + N(C)$. На любом шаге любое $a$ стоит левее любого $b$ и любого $B$,любое $b$ стоит левее любого $c$ и любого $C$. Также после любого нетерминального символа идет нетерминальный. То есть любое $a$ стоит левее любого $b, B, c, C.$ Таким образом, применяя различные правила к цепочке вида $a^nS(BC)^n$ мы получаем ту же цепочку $a^nb^nc^n$ или тупиковые цепочки.
+
+\item \textbf{Докажите, что язык $\{a^nb^n|n>0\}$ нерегулярен.}\\
+Язык регулярный, тогда и только тогда, когда существуем ДКА, принимающий этот язык. Предположим, что существует ДКА, принимающий данный язык:$Auto = (Q, {a, b}, D, Start, Final)$. Автомат конечный, следовательно он имеет конечное число состояний. Пусть $|Q| = k$. Так как ДКА принимает любое слово из языка, следовательно принимает и слово $a^{k+1}b^{k+1}.\\
+(Start, a^{k+1}b^{k+1}) \vdash (q_1, a^kb^{k+1}\vdash$...$\vdash(q_k, ab^{k+1})$...$\vdash (Final, \epsilon)$. Чтобы k+1 раз считать букву $k$ автомату нужно вернуться в одно из пройденных состояний, потому что "петель" в автомате быть не может, иначе мы не сможем контролировать количество считанных букв a, и автомат будет принимать так же слова не из языка.Следовательно, автомат не является ДКА, получаем противоречие. То есть для данного языка не существет ДКА, который его принимает, следовательно, язык не является регулярным.
+\item \textbf{Пусть язык $L\subseteq T^*$ -- регулярен. Докажите, что язык $L'=\{w\in T^*|w=yx, xy\in L, |x|=2\}$ тоже будет регулярным.}\\
+$L $ - регулярный $\Rightarrow \exists$ ДКА, принимающий этот язык:$A = (Q, T, D, Start, Final)$\\
+Чтобы доказать регулярность языка $L'$ построим НКА, принимающий этот язык: $\hat{A} = (\hat{Q}, T, \hat{D}, \hat{Start}, \hat{Final})$\\
+Если представить автомат А в виде графа, то, чтобы построить автомат $\hat{A}$, мы скопируем первые ребра исходного автомата, и создав 2 новые вершины, добавим эти скопированные ребра в конец исходного автомата, а далее добавляем 2 скопированных ребра. Делаем такие автоматы для всех путей длины 2, получаем много таких автоматов, далее заводим новую вершину и по $\epsilon$ - переходам соединяем стартовые вершины полученных автоматов. В виде графа, автомат для конкретного выбранного пути длины 2 выглядит следующим образом:
+\begin{figure}[h]
+\center{\includegraphics[scale=0.15]{5.jpg}}
+\end{figure}\newpage
+Опишем формально: $\hat{A} = (\hat{Q}, T, \hat{D}, \hat{Start}, \hat{Final})\\
+\hat{Q} = Q\times Q\times Q;\\
+\hat{Start} = (q_1_i; q_2_j; q_2_j);\\
+\hat{Final} = (q_1_i, q_2_j, q_2_j);\\
+\hat{D}(q_1_i, q_2_j, q, a) = (q_1_i, q_2_j, D(q, a)) = (q_1_i, q_2_j, q'); \hat{D}(q_1_i, q_2_j, Final, a) = (q_1_i, q_2_j, q_1_i)~\forall~a\in T,\\$ где $\exists a\in T : D(q_1_i, a) = q_2_j$, то есть существует такие 2 ребра $(start, q_1_i)$ и $(q_1_i, q_2_j)$ в исходном автомате.\\
+Докажем корректность построенного автомата: 1) Очевидно, что слова вида $yx, xy\in L, |x| = 2$ автомат принимает. 2)Докажем, что автомат не принимает никакие другие слова. Пусть автомат принял слово $w \notin L' $, по построению автомата получаем, что тогда $w = yx, $где $|x| = 2, xy \in L$. Но по предположению, $w\notin L'$. Получаем противоречие. Построили НКА, принимающий только слова из языка $L'$ и никакие другие.\\
+
+\item \textbf{Постройте для РВ $a^*(b|bb)(a^*bb^*|b^*)^*$ над алфавитом $\{a,b\}$ недетерминированный конечный автомат.}
+\begin{figure}[h]
+\center{\includegraphics[scale=0.15]{3.jpg}}
+\end{figure}\\
+\begin{figure}[h]
+\center{\includegraphics[scale=0.153]{2.jpg}}
+\end{figure}\\
+\newpage 
+\item 
+\textbf{(4) Пусть язык $L\subseteq T^*$ -- регулярный. Докажите, что язык $\sqrt{L} = \{w\in T^*|ww\in L\}$ тоже будет регулярным.}\\
+Пусть атомат $A$ принимает язык $L$. $A = (Q, T, D, Start, Final);$ построим автомат, который будет принимать язык $L'$: $\hat{A} = (\hat{Q}, T, \hat{D}, \hat{Start}, \hat{Final}), \hat{Q} = Q\times Q \times Q, Start = (q_0, q, q^*_0), Final = (q, q , q_{final}), \hat{D}(q_1, q_2, q_3, x) = (D(q_1, x), q_2, D(q_3, x))$. Будем фиксировать состояние q и запускать машину "параллельно", то есть выбрав фиксированное состояние $q$, делем путь на 2 части и прочитываем слово параллельно (одновременно) по обоим частям). $q_0$ - начало первой половины, $q^*_0$ - начало второй. Таким образом будем перебирать все возможные состояния q. Если для какого-то из фиксированных состояний первая половина слова и вторая считались одновременно, то слово принадлежит языку $\sqrt{L}.$\\
+Докажем корректность: 1)Допустим, $w: ww\in L$ не принимает построенны автомат. Это значит, что $\forall q \in Q$ cлово $w$ не может быть считано построенным выше образом, но это значит, что $ww \notin L$. Очевидно, что слова $w: ww\in L$ принимаются автоматом $\hat{A}$. \\
+2) Теперь докажем, что автомат не может принимать никакие другие слова. Пусть $\hat{A}$ принял слово $u: u\notin \sqrt{L}\Rightarrow u^2 \notin L.$ Если автомат принял это слово, значит $\exists q\in Q: ((q_0, q, q), u) \vdash$...$\vdash ((q, q, q_{final}), \epsilon), $ но это значит, что слово $u^2 \in L$, получаем противоречие. Доказали, что постороенный автомат принимает тольео цепочки из языка $\sqrt{L}$ и никакие другие.
+\item 
+\textbf{(3) Постройте КА для языка всех слов над алфавитом $\{a,b\}$, в который после каждой буквы $a$  далее встречается (не обязательно следующим символом) буква $b$ и нет двух $b$ подряд.}\\
+Построим регулярное выражение для слов языка: $b(aa^*b)^*|(aa^*b)^*$\\
+\begin{figure}[h]
+\center{\includegraphics[scale=0.153]{6.jpg}}
+\end{figure}\\
+Очевидно, что автомат принимает слова, оканчивающиеся на $b$, в которых нет 2-х b подряд и пустое слово.
+Докажем по индукции, что построенны автомат принимает язык (натуральный параметр - число шагов, то есть длина входного слова).\\
+1) База: $n = 1: (q_0, b) \vdash (q_2, \epsilon)$ - принимается языком, $ (q_0, a)\vdash (q_1, \epsilon) $ - не принимается, $(q_0, \epsilon) \vdash (q_2, \epsilon)$ - принимается языком.\\
+2) Индукционный переход: $n = k$. Пусть автомат принимает все слова длины <= k, которые оканчиваются на b и в которых нет 2-х букв b подряд и только эти слова. Докажем, что это утверждение справедливо для $n = k+1$. Мы знаем, в каком состоянии находится автомат после считывания первых k символов: если он находится в финальном состоянии, из этого следует, что слово оканчивается на b и нет 2-х b подряд, k+1 буква - $a|b$, но очевидно, что такое слово автоматом не принимается, потому что ни из одного финального состояния нет перехода в финальное состояние. Если первые k символом не образуют цепочку, которая принимается автоматом, значит:1) либо в них есть 2 b подряд, тогда слово из $k$ таких символов и одной любой буквы, очевидно, тоже автоматом не принимаются, 2) либо цепочка оканчивается на a и в ней нет двух букв b подряд. Тогда цепочка, состоящая из k этих символов и буквы b, очевидно, принимается автоматом, а состоящая из k этих символов и буквы a нет. Таким образом, мы рассмотрели все возможные варианты. Доказали, что автомат принимает только слова из языка и никакие другие.
+\end{enumerate}
+\end{document}

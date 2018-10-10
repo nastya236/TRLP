@@ -1,0 +1,243 @@
+\documentclass[10pt]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage[shortlabels]{enumitem} 
+\usepackage{amsxtra, upgreek}
+\usepackage{enumitem, fancyref, theoremref}
+\usepackage{amsmath, amssymb, amsthm, thmtools}
+\usepackage{amsrefs, latexsym,pstricks, mathtext}
+\usepackage{hyperref, caption, tikz, bbm}
+\usepackage{algorithm2e}
+\usepackage{graphicx}
+\graphicspath{{pictures/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\usepackage[left=0mm, top=0mm, right=0mm, bottom=0mm, nohead, nofoot]{geometry}
+
+\textwidth=42pc
+\calclayout
+
+%===============================================================================
+
+% Title settings for Russian language in amsart
+
+%===============================================================================
+
+\makeatletter
+\def\@settitle{\begin{center}%
+    \baselineskip14\p@\relax
+    \bfseries\scshape
+    \@title
+  \end{center}%
+}
+\makeatother
+
+%===============================================================================
+
+% Defined commands
+
+%===============================================================================
+
+\newcommand{\BR}{\mathbb{R}} %real numbers
+\newcommand{\BN}{\mathbb{N}} %natural numbers
+\newcommand{\BZ}{\mathbb{Z}} %integer numbers
+\newcommand{\BZp}{\BZ_{\geqslant 0}} %nonnegative integers
+\newcommand{\BC}{\mathbb{C}} %complex numbers
+\newcommand{\qet}[1]{| #1 \rangle} %qet vector notation
+\newcommand{\braqet}[2]{\langle #1 | #2 \rangle} %braqet
+\newcommand{\triqet}[3]{\langle #1 | #2 | #3 \rangle} %triqet
+\newcommand{\pst}[1]{\underline{#1}} %particle included in spaces
+\newcommand{\BP}{\mathbb{P}} %probability
+\newcommand{\const}{\mathrm{const}} %constant
+\newcommand{\vspan}[1]{\mathrm{span}\{ #1 \}} %span
+\newcommand{\ceiling}[1]{\lceil #1 \rceil} %ceiling
+\newcommand{\floor}[1]{\lfloor #1 \rfloor} %floor
+\newcommand{\Alg}{\mathrm{Alg}} %algorithm
+\newcommand{\row}{\mathrm{row}} %row
+\newcommand{\eps}{\varepsilon} %eps
+\newcommand{\Ss}{\Sigma^*} %all words
+\newcommand{\Einheit}{\mathbbm{1}} %characteristic function
+\newcommand{\RAMS}[4]{\big< #1, \{#2_i\}, \{#3_i\}, \{#4_i\} \big>} %RAM state
+
+%===============================================================================
+
+% Theorem styles
+
+%===============================================================================
+
+\theoremstyle{plain}
+\newtheorem*{quest}{Вопрос}
+\newtheorem{prop}{Утверждение}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{hypoth}{Гипотеза}
+\newtheorem{lemma}{Лемма}[section]
+
+\theoremstyle{remark}
+\newtheorem{conseq}{Вывод}
+\newtheorem{rem}{Замечание}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+
+\newtheoremstyle{problem}
+  {\topsep}   % ABOVESPACE
+  {\topsep}   % BELOWSPACE
+  {\normalfont}  % BODYFONT
+  {0pt}       % INDENT
+  {\bfseries} % HEADFONT
+  {.}         % HEADPUNCT
+  {5pt plus 1pt minus 1pt} % HEADSPACE
+  {}          % CUSTOM-HEAD-SPEC
+\newtheorem{problem}{Задача}
+\newenvironment{theorem}[2][Теорема]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Задача]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+ 
+\def\eps{\varepsilon}
+\def\T{{\cal T}}
+\def\H{{\cal H}}
+\def\F{{\cal F}}
+\def\K{{\cal K}}
+\def\L{{\cal L}}
+\def\F{{\cal F}}
+\def\Q{{\cal Q}}
+\def\N{{\cal N}}
+\def\p{{\cal P}}
+\def\np{{\cal NP}}
+\def\A{{\cal A}}
+\def\B{{\cal B}}
+\def\D{{\cal D}}
+\def\BB{{\cal B}^* }
+\def\DD{{\cal D}^* }
+\def\TT{\tilde{\cal T}}
+\def\f{\tilde f}
+\def\ind{\mathop{\rm index}}
+\def\St{\mathop{\rm St}}
+\let\bd\partial
+\def\V{\ensuremath{{\cal V}}}
+\def\SS{{\mathbb S}}
+\def\RR{\mathbb R}
+\def\QQ{\mathbb Q}
+\def\PP{\mathbb P}
+\def\R{\cal R}
+\def\NN{\mathbb N}
+\def\CC{\mathbb C}
+\def\ZZ{\mathbb Z}
+\def\FF{\mathbb F}
+\def\s{\sigma}
+\def\S{\Sigma }
+\def\ss{\Sigma^* }
+\def\ra{\rightarrow}
+\def\da{\downarrow}
+\def\Ra{\Rightarrow}
+\def\t{\theta}
+\def\l{\lambda}
+
+\begin{document}
+    \textup{Филиппова Анастасия}
+
+\begin{center}
+
+    \large\textbf{Домашнее задание 5}
+    
+
+\end{center}
+\begin{enumerate}
+\item Определение из учебника: все правила имеют вид: $A\rightarrow x|xD, A,D \in N, x\in T*$.\\
+С семинара: $1)A\rightarrow x|xD,x\in T, D,A\in N 2)$если $S\rightarrow \epsilon$, то $S$ не встречается больше в правилах с правой стороны. \\
+Докажем, что эти определения эквивалентны: для этого докажем, что для любой грамитики в "широком" смысле можно построить праволинейную грамматику в "узком" смысле.\\
+Рассмотрим грамматику, заданную определением в широком смысле:1) нет правила $S \rightarrow \epsilon$. Все правила имеют вид $A\rightarrow x|xD,$ где x - непустая цепочка. Тогда построим автомат, принимающий этот язык. Каждое правило можно задать следующим образом:\\
+\begin{figure}[h]
+\center{\includegraphics[scale=0.153]{1.jpg}}
+\end{figure}\\
+Тогда грамматика в узком смысле: $G = \small\{\small\{S,A, A_1,$...$A_n,D\small\}, \small\{x\small\}, A\rightarrow x[1]A_1, A_1\rightarrow x[2]A_2,$...$, A_{n-1} \rightarrow x[n]D\small\}, S\small\}$. Очевидно, что по таким правилам для любой грамматики в широком смысле можно построить грамматику в узком смысле.\\
+2) Грамматика задана в широком смысле и есть правило $S \rightarrow \epsilon $. Тогда правила вида $A \rightarrow xD|x,$ где $D \neq S$ , будут задаваться так же, как в пункте 1). Так как $S \rightarrow \epsilon$, то стартовое состояние является также финальным. Правила вида $S \rightarrow xS, x\in T^*$ (из стартого по цепочке х автомат переходит в стартовое), можно задать следующим образом:\\
+\begin{figure}[h]
+\center{\includegraphics[scale=0.33]{2.jpg}}
+\end{figure}\\
+Тогда грамматика в узком смысле:\\
+$G = \small\{\small\{S,A, A_1,$...$A_n\small\}, \small\{x\small\}, S\rightarrow x[1]A_1, A_1\rightarrow x[2]A_2,$...$, A_{n-1} \rightarrow x[n]|x[n]A_n, A_n\rightarrow x[1]A_1\small\}, S\small\}$.\\
+Очевидно, что по таким правилам для любой грамматики в широком смысле можно построить грамматику в узком смысле.\\
+\newpage
+\item \textbf{Вариант 13: Определим язык $L$ над алфавитом $\small\{a, b\small\}$ индуктивными правилами:\\
+$1) \epsilon \in L$;\\
+$2)\forall x \in L \hookrightarrow xa\in L, xaa \in L, xabba \in L$;\\
+$3)$никаких других слов в $L$ нет.\\
+В язык $T$ над алфавитом $\small\{a, b\small\}$ входит $\epsilon$ и ВСЕ начинающиеся и заканчивающиеся буквой $a$ слова, в которых над подслов $aba$ и $bbb$. Докажите или опровергните, что $ T = L$.}\\
+Решение:\\
+$L \in T,$ но $T \notin L: abbabba \in T$, но $abbabba \notin L$.
+
+\item \textbf{Вариант 14: $L_1 = (b|ab|aaa^*b)^*aaa^*; G(L_2) = L_2 = \small\{\small\{X,Y,Z\small\}, \small\{a,b\small\}, X \rightarrow aY, Y\rightarrow a|aZ, Z\rightarrow a|b|aZ|bZ, \small\{X\small\}\small\}$, построить минимальный полный ДКА для языка $\overline{L_1} \cap L_2^{R}$.}\\
+Решение:\\
+$\overline{L_1} \cap L_2^{R} = \overline{L_1 \cup \overline{L_2^{R}}}$.\\
+Построим НКА, принимающий язык $L_2$ по грамматике:\\
+\begin{figure}[h]
+\center{\includegraphics[scale=0.5]{1.png}}
+\end{figure}\\\newpage
+Далее построим ДКА, принимающий язык $L_2$ по алгоритму, рассказанному на семинаре:\\
+\begin{figure}[h]
+\center{\includegraphics[scale=0.5]{2.png}}
+\end{figure}\\
+Теперь, реверснув ребра и сделав стартовое состояние финальным, а финальное - стартовым, получим НКА, принимающий язык $L_2^{R}.$
+\begin{figure}[h]
+\center{\includegraphics[scale=0.4]{3.png}}
+\end{figure}\\
+Теперь строим полный ДКА, принимающий язык $L_2^{R}$:\\
+\begin{tabular}{|c|c|c|}
+    \hline
+     & a & b  \\
+   \hline
+    A 3 & B & A \\
+   \hline
+  B 3,2 & C & A\\
+   \hline
+   C 1,2,3 & C & A\\
+    \hline\end{tabular}\\
+    \newpage
+\begin{figure}[h]
+\center{\includegraphics[scale=0.5]{4_1.png}}
+\end{figure}\\
+Теперь строим автомат, принимающий язык $\overline{L_2^{R}}$, делая все финальные состояния не финальными, а не финальные - финальными. Стартовое состояние остается тем же (A). Получаем автомат:\\
+\begin{figure}[h]
+\center{\includegraphics[scale=0.5]{5.png}}
+\end{figure}\\\newpage
+Построим НКА, принимающий язык $L_1$:\\
+\begin{figure}[h]
+\center{\includegraphics[scale=0.5]{6.png}}
+\end{figure}\\
+Создав начальное состояние 0, финальное состояние 8 и $\epsilon$ - переходы из 0 в начальные состояния автоматов, принимающих языки $\overline{L_2^R}$ и $L_1$, из финальных в 8, получим автомат, принимающий язык $\overline{L_2^R} \cup L_1$:\\
+\begin{figure}[h]
+\center{\includegraphics[scale=0.4]{9.png}}
+\end{figure}\\
+\newpage
+Построим ДКА:\\
+\begin{tabular}{|c|c|c|}
+    \hline
+     & a & b  \\
+   \hline
+    A 0,1,2,9,8 & B & A \\
+   \hline
+  B 4,6,10,3,8 & C & A\\
+   \hline
+   C 5,7,11,8 & C & A\\
+    \hline\end{tabular}\\
+\begin{figure}[h]
+\center{\includegraphics[scale=0.5]{7.png}}
+\end{figure}\\
+В автомате получили, что все состояния являются финальными, следовательно, $\overline{\overline{L_2^R}\cup L_1}$ - пустой.
+Тогда автомат для пустого языка:\\
+\begin{figure}[h]
+\center{\includegraphics[scale=0.5]{8.png}}
+\end{figure}\\
+\end{enumerate}
+\end{document}
